@@ -18,7 +18,7 @@
 {
     MAX = 20;
     
-    
+    //Test
                         // to add element: [array addObject: @"color"];
                         // to insert     : [array insertObject: @..];
     
