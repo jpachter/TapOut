@@ -11,41 +11,33 @@
 
 @implementation Memory
 
-@synthesize userMode;
-@synthesize MAX;
+// ---------------------------------------------------------------
+// What exactly needs to be done in Memory constructor and reset?
 
-- (int)startGame           // do we need to save user's mode in this class?
+
+- (void) Memory
 {
-    MAX = 20;
+    // ?
     
-    //Test
-                        // to add element: [array addObject: @"color"];
-                        // to insert     : [array insertObject: @..];
-    
-    _index = 0;
-    _playerPos = -1;
-    
-    int ret = [self addRandom:array];
-    return ret;
-    
+    [self build];
 }
 
-- (int)addRandom:(NSInteger[])arr
+- (void) build
 {
-    arr[_index] = rand() % 4;       // random number 0-3
-    _index += 1;
-    return arr[_index-1];
+    for(int i=0; i<MAX; i++)
+        buttonSequence[i] = rand() % 4;     // random number 0-3
 }
 
-- (void) deleteValues // delete array
+- (int) getButton: (int)index
 {
-    for(int i = 0; i < 20; i++)
-        array[i] = -1;
+    return buttonSequence[index];
 }
 
-- (int)getValue:(int)index
+- (void) reset
 {
-    return array[index];
+    // ?
+    
+    [self build];
 }
 
 

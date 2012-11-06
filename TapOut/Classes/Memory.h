@@ -9,19 +9,15 @@
 #import <Foundation/Foundation.h>
 #include <stdlib.h>
 
-@interface Memory : NSObject{
-    
+@interface Memory : NSObject
+{
+    NSInteger MAX = 30;
+    NSInteger buttonSequence[MAX];
 }
 
-@property int userMode;
-@property int MAX;
-@property int index;
-@property int playerPos;        // number 0-3 indicating position
-extern NSInteger array[];
-
-- (int)startGame;
-- (int)addRandom:(NSInteger[])arr;
-- (void)deleteValues;
-- (int)getValue:(int)index;
+- (void)Memory;
+- (void)build;
+- (int)getButton:(int)index;
+- (void)reset;
 
 @end
