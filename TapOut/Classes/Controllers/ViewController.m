@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "ClassicViewController.h"
 
 @interface ViewController ()
 
@@ -25,6 +26,11 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-///aaaaa
+
+-(IBAction) goToClassic:(id)sender{
+    ClassicViewController *classic = [[ClassicViewController alloc] initWithNibName: nil bundle:nil];
+    [self presentViewController:classic animated:YES completion:nil];
+}
+
 
 @end

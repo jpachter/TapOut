@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3121A45116497CD400F6E512 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3121A45016497CD400F6E512 /* ViewController.xib */; };
 		316DD0BE164883C6007851DF /* ClassicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 316DD0BC164883C6007851DF /* ClassicViewController.m */; };
 		316DD0BF164883C6007851DF /* ClassicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 316DD0BD164883C6007851DF /* ClassicViewController.xib */; };
 		31D5D6BF164728CE008393C2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31D5D6BE164728CE008393C2 /* UIKit.framework */; };
@@ -19,10 +20,10 @@
 		31D5D6FA16472969008393C2 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 31D5D6ED16472969008393C2 /* Default@2x.png */; };
 		31D5D6FB16472969008393C2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 31D5D6EE16472969008393C2 /* InfoPlist.strings */; };
 		31D5D6FC16472969008393C2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 31D5D6EF16472969008393C2 /* main.m */; };
-		31D5D6FE16472969008393C2 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31D5D6F416472969008393C2 /* ViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3121A45016497CD400F6E512 /* ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
 		316DD0BB164883C6007851DF /* ClassicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ClassicViewController.h; path = ../../../ClassicViewController.h; sourceTree = "<group>"; };
 		316DD0BC164883C6007851DF /* ClassicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ClassicViewController.m; path = ../../../ClassicViewController.m; sourceTree = "<group>"; };
 		316DD0BD164883C6007851DF /* ClassicViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ClassicViewController.xib; path = ../../../ClassicViewController.xib; sourceTree = "<group>"; };
@@ -41,9 +42,6 @@
 		31D5D6EF16472969008393C2 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		31D5D6F016472969008393C2 /* TapOut-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "TapOut-Info.plist"; sourceTree = "<group>"; };
 		31D5D6F116472969008393C2 /* TapOut-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TapOut-Prefix.pch"; sourceTree = "<group>"; };
-		31D5D6F416472969008393C2 /* ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
-		31D5D6FF16472A02008393C2 /* ClassicController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClassicController.h; sourceTree = "<group>"; };
-		31D5D70016472A02008393C2 /* ClassicController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClassicController.m; sourceTree = "<group>"; };
 		31D5D70116472A17008393C2 /* Memory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Memory.h; sourceTree = "<group>"; };
 		31D5D70216472A17008393C2 /* Memory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Memory.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -115,8 +113,6 @@
 		31D5D6E516472969008393C2 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				31D5D6FF16472A02008393C2 /* ClassicController.h */,
-				31D5D70016472A02008393C2 /* ClassicController.m */,
 				31D5D6E816472969008393C2 /* ViewController.h */,
 				31D5D6E916472969008393C2 /* ViewController.m */,
 				316DD0BB164883C6007851DF /* ClassicViewController.h */,
@@ -152,7 +148,7 @@
 		31D5D6F316472969008393C2 /* XIBs */ = {
 			isa = PBXGroup;
 			children = (
-				31D5D6F416472969008393C2 /* ViewController.xib */,
+				3121A45016497CD400F6E512 /* ViewController.xib */,
 				316DD0BD164883C6007851DF /* ClassicViewController.xib */,
 			);
 			path = XIBs;
@@ -213,8 +209,8 @@
 				31D5D6F916472969008393C2 /* Default.png in Resources */,
 				31D5D6FA16472969008393C2 /* Default@2x.png in Resources */,
 				31D5D6FB16472969008393C2 /* InfoPlist.strings in Resources */,
-				31D5D6FE16472969008393C2 /* ViewController.xib in Resources */,
 				316DD0BF164883C6007851DF /* ClassicViewController.xib in Resources */,
+				3121A45116497CD400F6E512 /* ViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

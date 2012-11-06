@@ -10,4 +10,7 @@
 
 @interface ViewController : UIViewController
 
+
+-(IBAction) goToClassic:(id)sender;
+
 @end
