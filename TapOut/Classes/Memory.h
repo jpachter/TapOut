@@ -15,6 +15,9 @@
     NSInteger buttonSequence[30];
 }
 
+
+@property (readonly) NSInteger *buttonSequence;
+
 - (void)Memory;
 - (void)build;
 - (int)getButton:(int)index;

@@ -5,22 +5,17 @@
 //  Created by CSE483W on 11/7/12.
 //  Copyright (c) 2012 CSE483W. All rights reserved.
 //
-#define kStateRunning 1
-#define kStateGameOver 2
+#define GAME_RUNNING 1
+#define GAME_OVER 2
 
 #import "ClassicViewController.h"
 #import "ViewController.h"
 #import "Memory.h"
 #import <time.h>
 
-
-@interface ClassicViewController ()
-
-@end
-
 @implementation ClassicViewController
 
-@synthesize gameState,Button11,Button22,Button33,Button44;
+@synthesize gameState;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -34,14 +29,22 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
     
-    if(gameState==kStateRunning){
+    //Create memory structure.
+    //memory = [[Memory alloc] init];
+    
+    // Do any additional setup after loading the view.
+    
+    //Game is running. (User previously clicked home button to exit). Resume game.
+    if(gameState == GAME_RUNNING){
+        //Wait 2 seconds, call playGame.
         [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(playgame) userInfo:nil repeats:NO];
     }
+    //Game startup. Initialize and begin.
     else{
         [self startgame];
-        gameState=kStateRunning;
+        gameState=GAME_RUNNING;
+        
         [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(playgame) userInfo:nil repeats: NO];
     }
 }
@@ -56,7 +59,7 @@
     score=0;
     arrindex=0;
     playerindex=0;
-    roundindex=0;
+    roundindex=1;
     [self build];
 }
 
@@ -68,15 +71,8 @@
 }
 
 -(void)playgame{
-    if(playerindex!=roundindex){   //player did not click round(number) buttons in last round.
-        gameState=kStateGameOver;
-        _GameOver.hidden=0;
-        _ClickWhat.text=[NSString stringWithFormat:@"round: %i",roundindex];
-    }
-    else{
-        if(gameState == kStateRunning){
-            roundindex+=1;
-            _RoundLabel.text=[NSString stringWithFormat:@"round: %i",roundindex];
+
+        //if(gameState == GAME_RUNNING){
             
             //disable the click funciton of all the colored buttons when illuminate colors.
             //Button11.enabled=NO;
@@ -97,18 +93,16 @@
             //Button33.enabled=YES;
             //Button44.enabled=YES;
             
-            // in real work, the interval time should be 4*(roundindex+1);
-            [NSTimer scheduledTimerWithTimeInterval:2*(roundindex+1) target:self selector:@selector(playgame) userInfo:nil repeats:NO];
-        }
-        else if(gameState == kStateGameOver){
+        //}
+        //else if(gameState == GAME_OVER){
             //gameover
             //_GoBack.hidden=0;
             // _Replay.hidden=0;
-            _GameOver.hidden=0;
+           // _GameOver.hidden=0;
             //_GameoverLabel.hidden=0;
             //////
-        }
-    }
+        //  }
+    
 }
 
 -(void) illumination:(NSTimer *) timer{   //illuminate buttons whose values are read from arry
@@ -127,13 +121,13 @@
     }
     else if (index==3)
     {
-        _BlueButton.alpha=1;
+        _GreenButton.alpha=1;
         _ClickWhat.text=[NSString stringWithFormat:@"button3"];
         [self performSelector:@selector(colorback) withObject:nil afterDelay:1.0];
     }
     else if (index==4)
     {
-        _GreenButton.alpha=1;
+        _BlueButton.alpha=1;
         _ClickWhat.text=[NSString stringWithFormat:@"button4"];
         [self performSelector:@selector(colorback) withObject:nil afterDelay:1.0];
     }
@@ -153,77 +147,47 @@
 
 
 //player click buttons. I assume that whenever the player has a right click, the score will increase by one.
-- (IBAction)Button1:(id)sender {
-    if(playerindex>roundindex){   //if the player click more then required button, game over.
-        gameState=kStateGameOver;
-        _ClickWhat.text=@"game over";
+- (IBAction)gameButtonClicked:(id)sender {
+    
+    NSInteger tmp;
+    
+    switch ( ((UIButton*)sender).tag ){
+            
+        case 1:
+            tmp = 1;
+            break;
+        case 2:
+            tmp = 2;
+            break;
+        case 3:
+            tmp = 3;
+            break;
+        case 4:
+            tmp = 4;
+            break;
+            
     }
-    else{
-        if(arry[playerindex]==1){
-            score+=1;
-            _ScoreLabel.text=[NSString stringWithFormat:@"score: %i",score];
-            Button11=(UIButton *)sender;
-            playerindex+=1;
+    
+    if(arry[playerindex] == tmp){
+    
+        _ScoreLabel.text=[NSString stringWithFormat:@"score: %i",++score];
+        
+        if(playerindex == roundindex-1){
+            playerindex = 0;
+            _RoundLabel.text=[NSString stringWithFormat:@"round: %i",++roundindex];
+            [self playgame];
         }
         else{
-            gameState=kStateGameOver;
+            playerindex++;
         }
+    }
+    else{
+        gameState = GAME_OVER;
+        [self alertOKCancelAction];
+        
     }
 }
 
-- (IBAction)Button2:(id)sender {
-    if(playerindex>roundindex){   //if the player click more then required button, game over.
-        gameState=kStateGameOver;
-        _ClickWhat.text=@"game over";
-    }
-    else{
-        if(arry[playerindex]==2){
-            score+=1;
-            _ScoreLabel.text=[NSString stringWithFormat:@"score: %i",score];
-            Button22=(UIButton *)sender;
-            playerindex+=1;
-        }
-        else{
-            gameState=kStateGameOver;
-        }
-    }
-}
-
-- (IBAction)Button3:(id)sender {
-    if(playerindex>roundindex){   //if the player click more then required button, game over.
-        gameState=kStateGameOver;
-        _ClickWhat.text=@"game over";
-    }
-    else{
-        if(arry[playerindex]==3){
-            score+=1;
-            _ScoreLabel.text=[NSString stringWithFormat:@"score: %i",score];
-            Button33=(UIButton *)sender;
-            playerindex+=1;
-        }
-        else{
-            gameState=kStateGameOver;
-        }
-    }
-}
-
-- (IBAction)Button4:(id)sender {
-    if(playerindex>roundindex){   //if the player click more then required button, game over.
-        gameState=kStateGameOver;
-        _ClickWhat.text=@"game over";
-    }
-    else{
-        if(arry[playerindex]==4){
-            score+=1;
-            _ScoreLabel.text=[NSString stringWithFormat:@"score: %i",score];
-            Button44=(UIButton *)sender;
-            playerindex+=1;
-        }
-        else{
-            gameState=kStateGameOver;
-        }
-    }
-}
 
 /*-(IBAction)GobackButton:(id)sender{
  ViewController *main=[[ViewController alloc] initWithNibName: nil bundle:nil];
@@ -235,4 +199,33 @@
  [self presentViewController:classic animated:YES completion:nil];
  
  }*/
+
+- (void)alertOKCancelAction {
+    // open a alert with an OK and cancel button
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Game Over" message:@"Try again?" delegate:self cancelButtonTitle:@"Main Menu" otherButtonTitles:@"OK", nil];
+                          [alert show];
+}
+                          
+- (void)alertView:(UIAlertView *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+// the user clicked one of the OK/Cancel buttons
+    if (buttonIndex == 0)
+    {
+        [self goToMain:nil];
+    }
+    else
+    {
+        //Rest
+        [self startgame];
+         _ScoreLabel.text=[NSString stringWithFormat:@"score: %i",score];
+        _RoundLabel.text=[NSString stringWithFormat:@"round: %i",roundindex];
+
+        [self playgame];
+    }
+}
+
+-(IBAction) goToMain:(id)sender{
+    ViewController *main = [[ViewController alloc] initWithNibName: nil bundle:nil];
+    [self presentViewController:main animated:YES completion:nil];
+}
+
 @end

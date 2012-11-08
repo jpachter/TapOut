@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Memory.h"
 
 
-@interface ClassicViewController : UIViewController{
+@interface ClassicViewController : UIViewController <UIAlertViewDelegate>{
     
     int score;
     int arry[30];
@@ -21,7 +22,7 @@
     NSTimer *classictimer;
     NSTimer *myTimer;
     NSInteger gameState;
-    //Memory *memorystruct;
+   // Memory *memory;
     
 }
 
@@ -35,19 +36,19 @@
 @property (weak, nonatomic) IBOutlet UIButton *BlueButton;
 @property (weak, nonatomic) IBOutlet UIButton *GreenButton;
 
-@property (weak, nonatomic) IBOutlet UIButton *Button11;
-@property (weak, nonatomic) IBOutlet UIButton *Button22;
-@property (weak, nonatomic) IBOutlet UIButton *Button33;
-@property (weak, nonatomic) IBOutlet UIButton *Button44;
-
 @property (weak, nonatomic) IBOutlet UILabel *ScoreLabel;
 @property (weak,nonatomic) IBOutlet UILabel *RoundLabel;
 @property (weak, nonatomic) IBOutlet UILabel *ArrindexLabel;
 
--(IBAction)Button1:(id)sender;
--(IBAction)Button2:(id)sender;
--(IBAction)Button3:(id)sender;
--(IBAction)Button4:(id)sender;
+
+@property (weak, nonatomic) UIAlertView *alert;
+
+-(IBAction)gameButtonClicked:(id)sender;
+
+-(IBAction) goToMain:(id)sender;
+
+- (void)alertOKCancelAction;
+- (void)alertView:(UIAlertView *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex;
 
 //-(IBAction)GobackButton:(id)sender;
 //-(IBAction)ReplayButton:(id)sender;
