@@ -1,45 +1,53 @@
-//
-//  ClassicViewController.h
-//  TapOut
-//
-//  Created by CSE483W on 11/4/12.
-//  Copyright (c) 2012 CSE483W. All rights reserved.
-//
 #import <UIKit/UIKit.h>
+
 
 @interface ClassicViewController : UIViewController{
     
-    //Private variables, getters and setters are not implicitly declared.
-    //These are only accessible within the class.
-    int arrindex;
     int score;
     int arry[30];
+    
+    int arrindex;
+    int playerindex;
+    int roundindex;
+    
     NSTimer *classictimer;
+    NSTimer *myTimer;
     NSInteger gameState;
+    //Memory *memorystruct;
+    
 }
 
-//These properties will be '@synthesize' in the implementation. Setters and getters are
-//implicitly created and we can then access them from outside of the class.
-@property (weak, nonatomic) IBOutlet UIView *gameover;
-@property (weak, nonatomic) IBOutlet UILabel *gameoverlabel;
-@property (weak, nonatomic) IBOutlet UIButton *goback;
-@property (weak, nonatomic) IBOutlet UIButton *replay;
+@property (weak, nonatomic) IBOutlet UIView *GameOver;
+//@property (weak, nonatomic) IBOutlet UILabel *GameoverLabel;
+//@property (weak, nonatomic) IBOutlet UIButton *GoBack;
+//@property (weak, nonatomic) IBOutlet UIButton *Replay;
 
-@property (weak, nonatomic) IBOutlet UIButton *redbutton;
-@property (weak, nonatomic) IBOutlet UIButton *yellowbutton;
-@property (weak, nonatomic) IBOutlet UIButton *bluebutton;
-@property (weak, nonatomic) IBOutlet UIButton *greenbutton;
+@property (weak, nonatomic) IBOutlet UIButton *RedButton;
+@property (weak, nonatomic) IBOutlet UIButton *YellowButton;
+@property (weak, nonatomic) IBOutlet UIButton *BlueButton;
+@property (weak, nonatomic) IBOutlet UIButton *GreenButton;
 
-@property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
+@property (weak, nonatomic) IBOutlet UIButton *Button11;
+@property (weak, nonatomic) IBOutlet UIButton *Button22;
+@property (weak, nonatomic) IBOutlet UIButton *Button33;
+@property (weak, nonatomic) IBOutlet UIButton *Button44;
 
-@property (weak, nonatomic) IBOutlet UILabel *clickwhat;
+@property (weak, nonatomic) IBOutlet UILabel *ScoreLabel;
+@property (weak,nonatomic) IBOutlet UILabel *RoundLabel;
+@property (weak, nonatomic) IBOutlet UILabel *ArrindexLabel;
+
+-(IBAction)Button1:(id)sender;
+-(IBAction)Button2:(id)sender;
+-(IBAction)Button3:(id)sender;
+-(IBAction)Button4:(id)sender;
+
+//-(IBAction)GobackButton:(id)sender;
+//-(IBAction)ReplayButton:(id)sender;
+
+@property (weak, nonatomic) IBOutlet UILabel *ClickWhat;
 
 @property (nonatomic) NSInteger gameState;
 
-- (IBAction)button1:(id)sender;
-- (IBAction)button2:(id)sender;
-- (IBAction)button3:(id)sender;
-- (IBAction)button4:(id)sender;
-
 @end
+
 

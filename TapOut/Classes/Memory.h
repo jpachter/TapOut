@@ -11,8 +11,8 @@
 
 @interface Memory : NSObject
 {
-    NSInteger MAX = 30;
-    NSInteger buttonSequence[MAX];
+    NSInteger MAX;
+    NSInteger buttonSequence[30];
 }
 
 - (void)Memory;
