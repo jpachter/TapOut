@@ -13,7 +13,7 @@
 @interface ClassicViewController : UIViewController <UIAlertViewDelegate>{
     
     int score;
-    int arry[30];
+    int arry[40];
     
     int arrindex;
     int playerindex;
