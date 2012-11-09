@@ -37,9 +37,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *GreenButton;
 
 @property (weak, nonatomic) IBOutlet UILabel *ScoreLabel;
-@property (weak,nonatomic) IBOutlet UILabel *RoundLabel;
+@property (weak, nonatomic) IBOutlet UILabel *RoundLabel;
 @property (weak, nonatomic) IBOutlet UILabel *ArrindexLabel;
-
 
 @property (weak, nonatomic) UIAlertView *alert;
 
