@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <QuartzCore/QuartzCore.h>
 #import "Memory.h"
 
 
@@ -25,6 +26,9 @@
    // Memory *memory;
     
 }
+
+-(void) buttonFade:(UIButton*) button;
+-(void) buttonReturn:(UIButton*) button;
 
 @property (weak, nonatomic) IBOutlet UIView *GameOver;
 //@property (weak, nonatomic) IBOutlet UILabel *GameoverLabel;

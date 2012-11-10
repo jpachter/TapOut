@@ -12,6 +12,8 @@
 #import "ViewController.h"
 #import "Memory.h"
 #import <time.h>
+//#import <NSThread.h>
+#import <QuartzCore/QuartzCore.h>
 
 @implementation ClassicViewController
 
@@ -30,18 +32,9 @@
 {
     [super viewDidLoad];
     
-    //Game is running. (User previously clicked home button to exit). Resume game.
-    if(gameState == GAME_RUNNING){
-        //Wait 1 second, call playGame.
-        [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(playgame) userInfo:nil repeats:NO];
-    }
     //Game startup. Initialize and begin.
-    else{
         [self startgame];
-        gameState=GAME_RUNNING;
-        
-        [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(playgame) userInfo:nil repeats: NO];
-    }
+        [self playgame];
 }
 
 - (void)didReceiveMemoryWarning
@@ -73,7 +66,7 @@
 -(void)playgame{
     
     //disable all colored buttons when illuminate
-    [self disablebuttons];
+   // [self disablebuttons];
     
     _RoundLabel.text=[NSString stringWithFormat:@"round: %i",roundindex];
     
@@ -82,7 +75,7 @@
     _ArrindexLabel.text=[NSString stringWithFormat:@"arryindex: %i",arrindex];
     
     //control the illumination per round
-    myTimer=[NSTimer scheduledTimerWithTimeInterval:1.5 target:self selector:@selector(illumination:) userInfo:nil repeats:YES];
+    myTimer=[NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(illumination:) userInfo:nil repeats:YES];
     _ArrindexLabel.text=[NSString stringWithFormat:@"arryindex: %i",arrindex];
     
 }
@@ -108,36 +101,63 @@
 -(void) illumination:(NSTimer *) timer{
     //illuminate buttons whose values are read from arry
     
+    UIButton *button;
     int index=arry[arrindex];
-    if(index==1){
-        _RedButton.alpha=1;
-        _ClickWhat.text=[NSString stringWithFormat:@"button1"];
-        [self performSelector:@selector(colorback) withObject:nil afterDelay:1];
+
+    switch((NSInteger)index){
+        case 1:
+            button = _RedButton;
+            break;
+        case 2:
+            button = _YellowButton;
+            break;
+        case 3:
+            button = _GreenButton;
+            break;
+        case 4:
+            button = _BlueButton;
+            break;
     }
-    else if (index==2)
-    {
-        _YellowButton.alpha=1;
-        _ClickWhat.text=[NSString stringWithFormat:@"button2"];
-        [self performSelector:@selector(colorback) withObject:nil afterDelay:1];
-    }
-    else if (index==3)
-    {
-        _GreenButton.alpha=1;
-        _ClickWhat.text=[NSString stringWithFormat:@"button3"];
-        [self performSelector:@selector(colorback) withObject:nil afterDelay:1];
-    }
-    else if (index==4)
-    {
-        _BlueButton.alpha=1;
-        _ClickWhat.text=[NSString stringWithFormat:@"button4"];
-        [self performSelector:@selector(colorback) withObject:nil afterDelay:1];
-    }
+
+//    [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(buttonFade) userInfo:nil repeats:NO];
+    [self buttonFade: button];
+    [self performSelector:@selector(buttonReturn:) withObject:button afterDelay:.5];
+  //  [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(buttonReturn) userInfo:nil repeats:NO];
+
+  
+    
     arrindex+=1;
     if(arrindex==roundindex)  //stop the calling of illumination.
     {
         [myTimer invalidate];
         [self enablebuttons];
     }
+}
+
+-(void) buttonFade: (UIButton*) button{
+    
+    button.selected = TRUE;
+    CATransition *transition = [CATransition animation];
+    transition.duration = .3;
+    transition.type = kCATransitionFade;
+    transition.delegate = self;
+    [button.layer addAnimation:transition forKey:nil];
+    button.selected = TRUE;
+}
+
+
+-(void) buttonReturn: (UIButton*) button{
+    
+    button.selected = FALSE;
+    CATransition *transition = [CATransition animation];
+    transition.duration = .3;
+    transition.type = kCATransitionFade;
+    transition.delegate = self;
+    [button.layer addAnimation:transition forKey:nil];
+    button.selected = FALSE;
+    
+    
+    
 }
 
 -(void)colorback{
