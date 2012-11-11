@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		310D52631650637A00C74B82 /* SpeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 310D52611650637A00C74B82 /* SpeedViewController.m */; };
+		310D52641650637A00C74B82 /* SpeedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 310D52621650637A00C74B82 /* SpeedViewController.xib */; };
 		3121A45116497CD400F6E512 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3121A45016497CD400F6E512 /* ViewController.xib */; };
 		316DD0BE164883C6007851DF /* ClassicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 316DD0BC164883C6007851DF /* ClassicViewController.m */; };
 		316DD0BF164883C6007851DF /* ClassicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 316DD0BD164883C6007851DF /* ClassicViewController.xib */; };
@@ -42,6 +44,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		310D52601650637A00C74B82 /* SpeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpeedViewController.h; path = ../../../SpeedViewController.h; sourceTree = "<group>"; };
+		310D52611650637A00C74B82 /* SpeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpeedViewController.m; path = ../../../SpeedViewController.m; sourceTree = "<group>"; };
+		310D52621650637A00C74B82 /* SpeedViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SpeedViewController.xib; path = ../../../SpeedViewController.xib; sourceTree = "<group>"; };
 		3121A45016497CD400F6E512 /* ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
 		316DD0BB164883C6007851DF /* ClassicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ClassicViewController.h; path = ../../../ClassicViewController.h; sourceTree = "<group>"; };
 		316DD0BC164883C6007851DF /* ClassicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ClassicViewController.m; path = ../../../ClassicViewController.m; sourceTree = "<group>"; };
@@ -157,6 +162,8 @@
 				31D5D6E916472969008393C2 /* ViewController.m */,
 				316DD0BB164883C6007851DF /* ClassicViewController.h */,
 				316DD0BC164883C6007851DF /* ClassicViewController.m */,
+				310D52601650637A00C74B82 /* SpeedViewController.h */,
+				310D52611650637A00C74B82 /* SpeedViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -191,6 +198,7 @@
 			children = (
 				3121A45016497CD400F6E512 /* ViewController.xib */,
 				316DD0BD164883C6007851DF /* ClassicViewController.xib */,
+				310D52621650637A00C74B82 /* SpeedViewController.xib */,
 			);
 			path = XIBs;
 			sourceTree = "<group>";
@@ -295,6 +303,7 @@
 				31F72A9B164E283D00F623DF /* orangeselect.png in Resources */,
 				31F72A9E164E2BFD00F623DF /* yellow.png in Resources */,
 				31F72A9F164E2BFD00F623DF /* yellowselect.png in Resources */,
+				310D52641650637A00C74B82 /* SpeedViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -309,6 +318,7 @@
 				31D5D6F716472969008393C2 /* ViewController.m in Sources */,
 				31D5D6FC16472969008393C2 /* main.m in Sources */,
 				316DD0BE164883C6007851DF /* ClassicViewController.m in Sources */,
+				310D52631650637A00C74B82 /* SpeedViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

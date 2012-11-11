@@ -12,5 +12,5 @@
 
 
 -(IBAction) goToClassic:(id)sender;
-
+-(IBAction) goToSpeed:(id)sender;
 @end

@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "ClassicViewController.h"
+#import "SpeedViewController.h"
 
 @interface ViewController ()
 
@@ -32,5 +33,8 @@
     [self presentViewController:classic animated:YES completion:nil];
 }
 
-
+-(IBAction) goToSpeed:(id)sender{
+    SpeedViewController *speed = [[SpeedViewController alloc] initWithNibName: nil bundle:nil];
+    [self presentViewController:speed animated:YES completion:nil];
+}
 @end
