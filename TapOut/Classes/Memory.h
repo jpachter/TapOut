@@ -1,5 +1,5 @@
 //
-//  MemoryStruct.h
+//  Memory.h
 //  TapOut
 //
 //  Created by CSE483W on 10/31/12.
@@ -11,16 +11,10 @@
 
 @interface Memory : NSObject
 {
-    NSInteger MAX;
-    NSInteger buttonSequence[30];
+    int buttonSequence[30];     // holds new sequence for each game
 }
 
-
-@property (readonly) NSInteger *buttonSequence;
-
-- (void)Memory;
-- (void)build;
-- (int)getButton:(int)index;
-- (void)reset;
+- (void)build;                  // builds new array for each game
+- (int)getButton:(int)index;    // returns button in sequence at index
 
 @end

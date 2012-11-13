@@ -10,54 +10,48 @@
 #import <QuartzCore/QuartzCore.h>
 #import "Memory.h"
 
-
 @interface ClassicViewController : UIViewController <UIAlertViewDelegate>{
     
-    int score;
-    int arry[40];
+    int playerScore;    // increments when player touches correct color
+    int playerIndex;    // increments when player touches a color (reset each round)
+    int roundIndex;     // increments when player moves to next round
+    int arrIndex;       // used for illuminating button sequence to player
     
-    int arrindex;
-    int playerindex;
-    int roundindex;
-    
-    NSTimer *classictimer;
-    NSTimer *myTimer;
-    NSInteger gameState;
-   // Memory *memory;
-    
+    NSTimer *myTimer;   // timer for how long each button should be illuminated
 }
 
--(void) buttonFade:(UIButton*) button;
--(void) buttonReturn:(UIButton*) button;
+@property Memory *memStruct;    // contains button sequence
 
-@property (weak, nonatomic) IBOutlet UIView *GameOver;
-//@property (weak, nonatomic) IBOutlet UILabel *GameoverLabel;
-//@property (weak, nonatomic) IBOutlet UIButton *GoBack;
-//@property (weak, nonatomic) IBOutlet UIButton *Replay;
-
+// buttons on the classic screen
 @property (weak, nonatomic) IBOutlet UIButton *RedButton;
 @property (weak, nonatomic) IBOutlet UIButton *YellowButton;
 @property (weak, nonatomic) IBOutlet UIButton *BlueButton;
 @property (weak, nonatomic) IBOutlet UIButton *GreenButton;
 
+// labels to display player's score and round
 @property (weak, nonatomic) IBOutlet UILabel *ScoreLabel;
 @property (weak, nonatomic) IBOutlet UILabel *RoundLabel;
+
+// Remove ArrindexLabel?
 @property (weak, nonatomic) IBOutlet UILabel *ArrindexLabel;
-
-@property (weak, nonatomic) UIAlertView *alert;
-
--(IBAction)gameButtonClicked:(id)sender;
-
--(IBAction) goToMain:(id)sender;
-
-- (void)alertOKCancelAction;
-- (void)alertView:(UIAlertView *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex;
-
-//-(IBAction)GobackButton:(id)sender;
-//-(IBAction)ReplayButton:(id)sender;
-
+// How to remove reference for clickwhat?? [Line 216 CVC.m]
 @property (weak, nonatomic) IBOutlet UILabel *ClickWhat;
 
-@property (nonatomic) NSInteger gameState;
+
+- (void)startGame;
+- (void)playRound;
+
+- (void)disableButtons;
+- (void)enableButtons;
+- (void)illumination:(NSTimer *) timer;
+
+- (void)buttonFade:(UIButton *) button;
+- (void)buttonReturn:(UIButton *) button;
+- (void)colorBack;
+
+- (IBAction)gameButtonClicked:(id) sender;
+- (void)popupGameOver;
+- (void)alertView:(UIAlertView *) popupAction clickedButtonAtIndex:(NSInteger) buttonIndex;
+- (IBAction)goToMain:(id) sender;
 
 @end

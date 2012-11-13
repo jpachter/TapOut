@@ -12,6 +12,7 @@
 		313D7BE91652B81C0084C9A4 /* SpeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 313D7BE71652B81C0084C9A4 /* SpeedViewController.m */; };
 		313D7BED1652B8310084C9A4 /* ClassicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 313D7BEB1652B8310084C9A4 /* ClassicViewController.xib */; };
 		313D7BEE1652B8310084C9A4 /* SpeedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 313D7BEC1652B8310084C9A4 /* SpeedViewController.xib */; };
+		313D7BF91652B98E0084C9A4 /* Memory.m in Sources */ = {isa = PBXBuildFile; fileRef = 313D7BF81652B98E0084C9A4 /* Memory.m */; };
 		31D5D6BF164728CE008393C2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31D5D6BE164728CE008393C2 /* UIKit.framework */; };
 		31D5D6C1164728CE008393C2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31D5D6C0164728CE008393C2 /* Foundation.framework */; };
 		31D5D6C3164728CE008393C2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31D5D6C2164728CE008393C2 /* CoreGraphics.framework */; };
@@ -51,6 +52,8 @@
 		313D7BE71652B81C0084C9A4 /* SpeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpeedViewController.m; sourceTree = "<group>"; };
 		313D7BEB1652B8310084C9A4 /* ClassicViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClassicViewController.xib; sourceTree = "<group>"; };
 		313D7BEC1652B8310084C9A4 /* SpeedViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpeedViewController.xib; sourceTree = "<group>"; };
+		313D7BF71652B98E0084C9A4 /* Memory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Memory.h; sourceTree = "<group>"; };
+		313D7BF81652B98E0084C9A4 /* Memory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Memory.m; sourceTree = "<group>"; };
 		31D5D6BA164728CE008393C2 /* TapOut.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TapOut.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		31D5D6BE164728CE008393C2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		31D5D6C0164728CE008393C2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -66,8 +69,6 @@
 		31D5D6EF16472969008393C2 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		31D5D6F016472969008393C2 /* TapOut-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "TapOut-Info.plist"; sourceTree = "<group>"; };
 		31D5D6F116472969008393C2 /* TapOut-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TapOut-Prefix.pch"; sourceTree = "<group>"; };
-		31D5D70116472A17008393C2 /* Memory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Memory.h; sourceTree = "<group>"; };
-		31D5D70216472A17008393C2 /* Memory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Memory.m; sourceTree = "<group>"; };
 		31F72A7C164E156000F623DF /* classic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = classic.png; sourceTree = "<group>"; };
 		31F72A7D164E156000F623DF /* classicclick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = classicclick.png; sourceTree = "<group>"; };
 		31F72A7E164E156000F623DF /* smarts.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smarts.png; sourceTree = "<group>"; };
@@ -137,8 +138,8 @@
 		31D5D6E116472969008393C2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				31D5D70116472A17008393C2 /* Memory.h */,
-				31D5D70216472A17008393C2 /* Memory.m */,
+				313D7BF71652B98E0084C9A4 /* Memory.h */,
+				313D7BF81652B98E0084C9A4 /* Memory.m */,
 				31D5D6E216472969008393C2 /* AppDelegate */,
 				31D5D6E516472969008393C2 /* Controllers */,
 			);
@@ -319,6 +320,7 @@
 				31D5D6FC16472969008393C2 /* main.m in Sources */,
 				313D7BE81652B81C0084C9A4 /* ClassicViewController.m in Sources */,
 				313D7BE91652B81C0084C9A4 /* SpeedViewController.m in Sources */,
+				313D7BF91652B98E0084C9A4 /* Memory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

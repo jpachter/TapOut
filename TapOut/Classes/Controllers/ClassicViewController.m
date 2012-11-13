@@ -10,14 +10,12 @@
 
 #import "ClassicViewController.h"
 #import "ViewController.h"
-#import "Memory.h"
 #import <time.h>
 //#import <NSThread.h>
-#import <QuartzCore/QuartzCore.h>
 
 @implementation ClassicViewController
 
-@synthesize gameState;
+@synthesize memStruct;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -33,8 +31,9 @@
     [super viewDidLoad];
     
     //Game startup. Initialize and begin.
-        [self startgame];
-        [self playgame];
+    memStruct = [[Memory alloc] init];
+    [self startGame];
+    [self playRound];
 }
 
 - (void)didReceiveMemoryWarning
@@ -43,44 +42,35 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void) startgame{
+- (void)startGame {
     //initialize everything
     
-    score=0;
-    arrindex=0;
-    playerindex=0;
-    roundindex=1;
-    _ClickWhat.text=@"Begin Game!";
-    [self build];
-}
-
--(void) build{
-    //build the array. how to use build of memory.m?
+    playerScore=0;
+    arrIndex=0;
+    playerIndex=0;
+    roundIndex=1;
     
-    for(int i=0;i<30;i++)
-    {
-        arry[i]=arc4random()%4+1;
-    }
+    [memStruct build];
 }
 
--(void)playgame{
+- (void)playRound {
     
     //disable all colored buttons when illuminate
-   // [self disablebuttons];
+    //[self disableButtons];
     
-    _RoundLabel.text=[NSString stringWithFormat:@"round: %i",roundindex];
+    _RoundLabel.text=[NSString stringWithFormat:@"round: %i",roundIndex];
     
     //illuminate button --- read value in arr from 0 to round-1
-    arrindex=0;
-    _ArrindexLabel.text=[NSString stringWithFormat:@"arryindex: %i",arrindex];
+    arrIndex=0;
+    _ArrindexLabel.text=[NSString stringWithFormat:@"arryindex: %i",arrIndex];
     
     //control the illumination per round
     myTimer=[NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(illumination:) userInfo:nil repeats:YES];
-    _ArrindexLabel.text=[NSString stringWithFormat:@"arryindex: %i",arrindex];
+    _ArrindexLabel.text=[NSString stringWithFormat:@"arryindex: %i",arrIndex];
     
 }
 
--(void) disablebuttons{
+- (void)disableButtons {
     //disable all buttons when illuminate
     
     _RedButton.enabled=NO;
@@ -89,8 +79,8 @@
     _BlueButton.enabled=NO;
 }
 
--(void) enablebuttons{
-    //enable buttons after illumination
+- (void)enableButtons {
+    //enable buttons after illuminate
     
     _RedButton.enabled=YES;
     _YellowButton.enabled=YES;
@@ -98,12 +88,12 @@
     _BlueButton.enabled=YES;
 }
 
--(void) illumination:(NSTimer *) timer{
-    //illuminate buttons whose values are read from arry
+- (void)illumination:(NSTimer *) timer {
+    //illuminate buttons whose values are read from memStruct
     
     UIButton *button;
-    int index=arry[arrindex];
-
+    int index=[memStruct getButton:arrIndex];
+    
     switch((NSInteger)index){
         case 1:
             button = _RedButton;
@@ -118,23 +108,19 @@
             button = _BlueButton;
             break;
     }
-
-//    [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(buttonFade) userInfo:nil repeats:NO];
+    
     [self buttonFade: button];
     [self performSelector:@selector(buttonReturn:) withObject:button afterDelay:.5];
-  //  [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(buttonReturn) userInfo:nil repeats:NO];
-
-  
     
-    arrindex+=1;
-    if(arrindex==roundindex)  //stop the calling of illumination.
+    arrIndex+=1;
+    if(arrIndex==roundIndex)  //stop the calling of illumination.
     {
         [myTimer invalidate];
-        [self enablebuttons];
+        [self enableButtons];
     }
 }
 
--(void) buttonFade: (UIButton*) button{
+- (void)buttonFade:(UIButton*) button {
     
     button.selected = TRUE;
     CATransition *transition = [CATransition animation];
@@ -145,8 +131,7 @@
     button.selected = TRUE;
 }
 
-
--(void) buttonReturn: (UIButton*) button{
+- (void)buttonReturn:(UIButton*) button{
     
     button.selected = FALSE;
     CATransition *transition = [CATransition animation];
@@ -155,12 +140,9 @@
     transition.delegate = self;
     [button.layer addAnimation:transition forKey:nil];
     button.selected = FALSE;
-    
-    
-    
 }
 
--(void)colorback{
+- (void)colorBack{
     //after lighting up buttons, colors go back
     
     _RedButton.alpha=0.2;
@@ -169,60 +151,55 @@
     _YellowButton.alpha=0.2;
 }
 
-
-//player click buttons. I assume that whenever the player has a right click, the score will increase by one.
-- (IBAction)gameButtonClicked:(id)sender {
-    // after illumination, player click buttons
+- (IBAction)gameButtonClicked:(id) sender {
+    //after illumination, player repeats sequence
     
-    //know which button the users have clicked.
-    NSInteger tmp;
+    //know which button the users have clicked
+    NSInteger playerClick;
     switch ( ((UIButton*)sender).tag ){
             
         case 1:
-            tmp = 1;
+            playerClick = 1;
             break;
         case 2:
-            tmp = 2;
+            playerClick = 2;
             break;
         case 3:
-            tmp = 3;
+            playerClick = 3;
             break;
         case 4:
-            tmp = 4;
+            playerClick = 4;
             break;
-            
     }
     
-    //if click right, score++, playerindex++
-    if(arry[playerindex] == tmp){
-    
-        _ScoreLabel.text=[NSString stringWithFormat:@"score: %i",++score];
+    //if click right, playerScore++, playerIndex++
+    if([memStruct getButton:playerIndex] == playerClick){
         
-        if(playerindex == roundindex-1){
-            playerindex = 0;
-            _RoundLabel.text=[NSString stringWithFormat:@"round: %i",++roundindex];
-            [self playgame];
+        _ScoreLabel.text=[NSString stringWithFormat:@"score: %i",++playerScore];
+        
+        if(playerIndex == roundIndex-1){
+            //next round
+            playerIndex = 0;
+            _RoundLabel.text=[NSString stringWithFormat:@"round: %i",++roundIndex];
+            [self playRound];
         }
-        else{
-            playerindex++;
-        }
+        else
+            playerIndex++;
     }
     else{
-        //if click wrong, game over. 
-        gameState = GAME_OVER;
-        [self alertOKCancelAction];
-        
+        //if player's click is wrong, game over
+        [self popupGameOver];
     }
 }
 
-- (void)alertOKCancelAction {
-    // open a alert with an OK and cancel button
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Game Over" message:@"Try again?" delegate:self cancelButtonTitle:@"Main Menu" otherButtonTitles:@"OK", nil];
-                          [alert show];
+- (void)popupGameOver {
+    // open a popup with return and retry buttons
+    UIAlertView *popup = [[UIAlertView alloc] initWithTitle:@"Game Over" message:@"Play again?" delegate:self cancelButtonTitle:@"Main Menu" otherButtonTitles:@"Retry", nil];
+    [popup show];
 }
-                          
-- (void)alertView:(UIAlertView *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-// the user clicked one of the OK/Cancel buttons
+
+- (void)alertView:(UIAlertView *)popupAction clickedButtonAtIndex:(NSInteger)buttonIndex {
+    // the user clicked one of the buttons on the game over popup
     if (buttonIndex == 0)
     {
         [self goToMain:nil];
@@ -230,15 +207,17 @@
     else
     {
         //Rest
-        [self startgame];
-         _ScoreLabel.text=[NSString stringWithFormat:@"score: %i",score];
-        _RoundLabel.text=[NSString stringWithFormat:@"round: %i",roundindex];
+        [self startGame];
+        _ScoreLabel.text=[NSString stringWithFormat:@"score: %i",playerScore];
+        _RoundLabel.text=[NSString stringWithFormat:@"round: %i",roundIndex];
         _ClickWhat.text=@"Begin Game";
-        [self playgame];
+        [self playRound];
     }
 }
 
--(IBAction) goToMain:(id)sender{
+- (IBAction)goToMain:(id) sender {
+    //return to main menu view
+    
     ViewController *main = [[ViewController alloc] initWithNibName: nil bundle:nil];
     [self presentViewController:main animated:YES completion:nil];
 }
