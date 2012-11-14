@@ -32,11 +32,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *ScoreLabel;
 @property (weak, nonatomic) IBOutlet UILabel *RoundLabel;
 
-// Remove ArrindexLabel?
-@property (weak, nonatomic) IBOutlet UILabel *ArrindexLabel;
-// How to remove reference for clickwhat?? [Line 216 CVC.m]
-@property (weak, nonatomic) IBOutlet UILabel *ClickWhat;
-
 
 - (void)startGame;
 - (void)playRound;
@@ -47,7 +42,6 @@
 
 - (void)buttonFade:(UIButton *) button;
 - (void)buttonReturn:(UIButton *) button;
-- (void)colorBack;
 
 - (IBAction)gameButtonClicked:(id) sender;
 - (void)popupGameOver;

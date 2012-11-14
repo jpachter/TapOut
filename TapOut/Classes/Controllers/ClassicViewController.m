@@ -62,12 +62,9 @@
     
     //illuminate button --- read value in arr from 0 to round-1
     arrIndex=0;
-    _ArrindexLabel.text=[NSString stringWithFormat:@"arryindex: %i",arrIndex];
     
     //control the illumination per round
     myTimer=[NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(illumination:) userInfo:nil repeats:YES];
-    _ArrindexLabel.text=[NSString stringWithFormat:@"arryindex: %i",arrIndex];
-    
 }
 
 - (void)disableButtons {
@@ -142,15 +139,6 @@
     button.selected = FALSE;
 }
 
-- (void)colorBack{
-    //after lighting up buttons, colors go back
-    
-    _RedButton.alpha=0.2;
-    _BlueButton.alpha=0.2;
-    _GreenButton.alpha=0.2;
-    _YellowButton.alpha=0.2;
-}
-
 - (IBAction)gameButtonClicked:(id) sender {
     //after illumination, player repeats sequence
     
@@ -210,7 +198,6 @@
         [self startGame];
         _ScoreLabel.text=[NSString stringWithFormat:@"score: %i",playerScore];
         _RoundLabel.text=[NSString stringWithFormat:@"round: %i",roundIndex];
-        _ClickWhat.text=@"Begin Game";
         [self playRound];
     }
 }

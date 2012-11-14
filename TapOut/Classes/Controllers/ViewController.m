@@ -37,4 +37,9 @@
     SpeedViewController *speed = [[SpeedViewController alloc] initWithNibName: nil bundle:nil];
     [self presentViewController:speed animated:YES completion:nil];
 }
+/*
+-(IBAction) goToSmarts:(id)sender{
+    SpeedViewController *smarts = [[SmartsViewController alloc] initWithNibName: nil bundle:nil];
+    [self presentViewController:smarts animated:YES completion:nil];
+}*/
 @end
