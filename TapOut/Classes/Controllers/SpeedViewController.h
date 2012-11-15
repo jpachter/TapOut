@@ -16,6 +16,10 @@
     int playerIndex;    // increments when player touches a color (reset each round)
     int roundIndex;     // increments when player moves to next round
     int arrIndex;       // used for illuminating button sequence to player
+    int timercount;
+    
+   // NSTimer *Timer1;
+    NSTimer *Timer2;
     
     NSTimer *myTimer;   // timer for how long each button should be illuminated
 }
@@ -31,6 +35,8 @@
 // labels to display player's score and round
 @property (weak, nonatomic) IBOutlet UILabel *ScoreLabel;
 @property (weak, nonatomic) IBOutlet UILabel *RoundLabel;
+@property (weak, nonatomic) IBOutlet UILabel *ReminingTime;
+@property (weak, nonatomic) IBOutlet UILabel *PlayerLabel; 
 
 
 - (void)startGame;

@@ -47,26 +47,25 @@
     playerScore=0;
     arrIndex=0;
     playerIndex=0;
-    roundIndex=1;
+    roundIndex=0;
     
     [memStruct build];
 }
 
 - (void)playRound {
-    
+
     //disable all colored buttons when illuminate
     //[self disableButtons];
-    
+        roundIndex++;
     _RoundLabel.text=[NSString stringWithFormat:@"round: %i",roundIndex];
     
+        playerIndex=0;
     //illuminate button --- read value in arr from 0 to round-1
     arrIndex=0;
     
     //control the illumination per round
     myTimer=[NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(illumination:) userInfo:nil repeats:YES];
-    
-    [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(illumination:) userInfo:nil repeats:YES];
-    [NSTimer scheduledTimerWithTimeInterval:2.6*roundIndex target:self selector:@selector(playRound) userInfo:nil repeats:NO];
+
 }
 
 - (void)disableButtons {
@@ -116,7 +115,29 @@
     {
         [myTimer invalidate];
         [self enableButtons];
+        timercount=roundIndex;
+        Timer2=[NSTimer scheduledTimerWithTimeInterval:0.7 target:self selector:@selector(TimerCount:) userInfo:nil repeats:YES];
     }
+}
+
+
+-(void) TimerCount:(NSTimer *) timer{
+    _ReminingTime.text=[NSString stringWithFormat:@"Time: %i",timercount];
+    _PlayerLabel.text=[NSString stringWithFormat:@"Player: %i",playerIndex];
+    timercount--;
+    if(timercount<0){
+        
+        [Timer2 invalidate];
+        if(playerIndex==roundIndex){
+            [self playRound];}
+        else{
+            [self popupGameOver];
+        }
+      // else{
+     //       [self popupGameOver];
+       // }
+    }
+    
 }
 
 - (void)buttonFade:(UIButton*) button {
@@ -163,23 +184,16 @@
     }
     
     //if click right, playerScore++, playerIndex++
-    if([memStruct getButton:playerIndex] == playerClick){
-        
-        _ScoreLabel.text=[NSString stringWithFormat:@"score: %i",++playerScore];
-        
-        if(playerIndex == roundIndex-1){
-            //next round
-            playerIndex = 0;
-            _RoundLabel.text=[NSString stringWithFormat:@"round: %i",++roundIndex];
-            [self playRound];
-        }
-        else
+    if((playerIndex<roundIndex)&&([memStruct getButton:playerIndex] == playerClick)){
+            _ScoreLabel.text=[NSString stringWithFormat:@"score: %i",++playerScore];
             playerIndex++;
     }
     else{
         //if player's click is wrong, game over
+        [Timer2 invalidate];
         [self popupGameOver];
     }
+    
 }
 
 - (void)popupGameOver {

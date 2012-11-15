@@ -29,5 +29,18 @@
          landmarkName = "-illumination:"
          landmarkType = "5">
       </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "TapOut/Classes/Controllers/SpeedViewController.h"
+         timestampString = "374709919.998759"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "21"
+         endingLineNumber = "21"
+         landmarkName = "@interface SpeedViewController"
+         landmarkType = "2">
+      </FileBreakpoint>
    </FileBreakpoints>
 </Bucket>
