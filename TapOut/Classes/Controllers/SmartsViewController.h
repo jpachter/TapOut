@@ -1,8 +1,8 @@
 //
-//  SpeedViewController.h
+//  SmartsViewController.h
 //  TapOut
 //
-//  Created by CSE483W on 11/15/12.
+//  Created by CSE483W on 11/5/12.
 //  Copyright (c) 2012 CSE483W. All rights reserved.
 //
 
@@ -10,7 +10,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "Memory.h"
 
-@interface SpeedViewController : UIViewController <UIAlertViewDelegate>{
+@interface SmartsViewController : UIViewController <UIAlertViewDelegate>{
     
     int playerScore;    // increments when player touches correct color
     int playerIndex;    // increments when player touches a color (reset each round)
@@ -22,7 +22,7 @@
 
 @property Memory *memStruct;    // contains button sequence
 
-// buttons on the speed screen
+// buttons on the smarts screen
 @property (weak, nonatomic) IBOutlet UIButton *RedButton;
 @property (weak, nonatomic) IBOutlet UIButton *YellowButton;
 @property (weak, nonatomic) IBOutlet UIButton *BlueButton;

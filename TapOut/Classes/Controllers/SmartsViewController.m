@@ -1,5 +1,5 @@
 //
-//  speedViewController.m
+//  SmartsViewController.m
 //  TapOut
 //
 //  Created by CSE483W on 11/7/12.
@@ -8,11 +8,11 @@
 #define GAME_RUNNING 1
 #define GAME_OVER 2
 
-#import "SpeedViewController.h"
+#import "SmartsViewController.h"
 #import "ViewController.h"
 #import <time.h>
 
-@implementation SpeedViewController
+@implementation SmartsViewController
 
 @synthesize memStruct;
 
@@ -64,9 +64,6 @@
     
     //control the illumination per round
     myTimer=[NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(illumination:) userInfo:nil repeats:YES];
-    
-    [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(illumination:) userInfo:nil repeats:YES];
-    [NSTimer scheduledTimerWithTimeInterval:2.6*roundIndex target:self selector:@selector(playRound) userInfo:nil repeats:NO];
 }
 
 - (void)disableButtons {

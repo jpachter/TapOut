@@ -11,7 +11,6 @@
 #import "ClassicViewController.h"
 #import "ViewController.h"
 #import <time.h>
-//#import <NSThread.h>
 
 @implementation ClassicViewController
 

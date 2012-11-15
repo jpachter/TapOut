@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "ClassicViewController.h"
 #import "SpeedViewController.h"
+#import "SmartsViewController.h"
 
 @interface ViewController ()
 
@@ -37,9 +38,10 @@
     SpeedViewController *speed = [[SpeedViewController alloc] initWithNibName: nil bundle:nil];
     [self presentViewController:speed animated:YES completion:nil];
 }
-/*
+
 -(IBAction) goToSmarts:(id)sender{
-    SpeedViewController *smarts = [[SmartsViewController alloc] initWithNibName: nil bundle:nil];
+    SmartsViewController *smarts = [[SmartsViewController alloc] initWithNibName: nil bundle:nil];
     [self presentViewController:smarts animated:YES completion:nil];
-}*/
+}
+
 @end

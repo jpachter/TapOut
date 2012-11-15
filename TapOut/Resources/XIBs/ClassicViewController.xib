@@ -171,7 +171,6 @@
 						<string key="NSFrame">{{161, 237}, {140, 140}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<int key="IBUITag">2</int>
@@ -278,7 +277,6 @@
 				<string key="NSFrame">{{0, 20}, {320, 548}}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
-				<reference key="NSNextKeyView"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">2</int>
 					<bytes key="NSRGB">MC44NTQ5MDIwMjkgMC45NjA3ODQzNzU3IDAuODY2NjY2NzM0MgA</bytes>
@@ -1181,9 +1179,7 @@
 						</object>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="ArrindexLabel">UILabel</string>
 						<string key="BlueButton">UIButton</string>
-						<string key="ClickWhat">UILabel</string>
 						<string key="GreenButton">UIButton</string>
 						<string key="RedButton">UIButton</string>
 						<string key="RoundLabel">UILabel</string>
@@ -1191,17 +1187,9 @@
 						<string key="YellowButton">UIButton</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="ArrindexLabel">
-							<string key="name">ArrindexLabel</string>
-							<string key="candidateClassName">UILabel</string>
-						</object>
 						<object class="IBToOneOutletInfo" key="BlueButton">
 							<string key="name">BlueButton</string>
 							<string key="candidateClassName">UIButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="ClickWhat">
-							<string key="name">ClickWhat</string>
-							<string key="candidateClassName">UILabel</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="GreenButton">
 							<string key="name">GreenButton</string>
