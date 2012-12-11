@@ -35,6 +35,8 @@
 
 - (void)startGame;
 - (void)playRound;
+- (void)roundOver;
+- (void)dismissAfterDelay:(UIAlertView *) alert;
 
 - (void)disableButtons;
 - (void)enableButtons;

@@ -55,7 +55,7 @@
 		313D7BF81652B98E0084C9A4 /* Memory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Memory.m; sourceTree = "<group>"; };
 		3173DE1416558B730077180B /* SpeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpeedViewController.h; sourceTree = "<group>"; };
 		3173DE1516558B730077180B /* SpeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpeedViewController.m; sourceTree = "<group>"; };
-		3173DE1916558BB70077180B /* SpeedViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpeedViewController.xib; sourceTree = "<group>"; };
+		3173DE1916558BB70077180B /* SpeedViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SpeedViewController.xib; path = "/Users/cse483w/Documents/iPhone Projects/TapOut/TapOut/Resources/XIBs/SpeedViewController.xib"; sourceTree = "<absolute>"; };
 		3173DE1B16558D4A0077180B /* SmartsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartsViewController.h; sourceTree = "<group>"; };
 		3173DE1C16558D4A0077180B /* SmartsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmartsViewController.m; sourceTree = "<group>"; };
 		3173DE2016558D770077180B /* SmartsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SmartsViewController.xib; sourceTree = "<group>"; };

@@ -16,7 +16,7 @@
     int playerIndex;    // increments when player touches a color (reset each round)
     int roundIndex;     // increments when player moves to next round
     int arrIndex;       // used for illuminating button sequence to player
-    int timercount;
+    double timercount;
     
    // NSTimer *Timer1;
     NSTimer *Timer2;
@@ -51,6 +51,8 @@
 
 - (IBAction)gameButtonClicked:(id) sender;
 - (void)popupGameOver;
+- (void)roundOver;
+- (void)dismissAfterDelay:(UIAlertView *) alert;
 - (void)alertView:(UIAlertView *) popupAction clickedButtonAtIndex:(NSInteger) buttonIndex;
 - (IBAction)goToMain:(id) sender;
 

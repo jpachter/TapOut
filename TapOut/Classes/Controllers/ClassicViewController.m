@@ -57,7 +57,7 @@
     //disable all colored buttons when illuminate
     //[self disableButtons];
     
-    _RoundLabel.text=[NSString stringWithFormat:@"round: %i",roundIndex];
+    _RoundLabel.text=[NSString stringWithFormat:@"Round: %i",roundIndex];
     
     //illuminate button --- read value in arr from 0 to round-1
     arrIndex=0;
@@ -162,13 +162,15 @@
     //if click right, playerScore++, playerIndex++
     if([memStruct getButton:playerIndex] == playerClick){
         
-        _ScoreLabel.text=[NSString stringWithFormat:@"score: %i",++playerScore];
+        _ScoreLabel.text=[NSString stringWithFormat:@"Score: %i",++playerScore];
         
         if(playerIndex == roundIndex-1){
+            
+            [self roundOver];
             //next round
             playerIndex = 0;
-            _RoundLabel.text=[NSString stringWithFormat:@"round: %i",++roundIndex];
-            [self playRound];
+            _RoundLabel.text=[NSString stringWithFormat:@"Round: %i",++roundIndex];
+            [self performSelector:@selector(playRound) withObject:nil afterDelay:1.5];
         }
         else
             playerIndex++;
@@ -185,6 +187,25 @@
     [popup show];
 }
 
+- (void)roundOver {
+    // open a popup with return and retry buttons
+    UIAlertView *alert = [[UIAlertView alloc]
+                          initWithTitle: @"TapOut"
+                          message: [NSString stringWithFormat:@"\nRound %i Complete!!", playerIndex+1]
+                          delegate: nil
+                          cancelButtonTitle:nil
+                          otherButtonTitles:nil];
+    [alert show];
+    
+    [self performSelector:@selector(dismissAfterDelay:) withObject:alert afterDelay:1.5];
+
+}
+
+- (void)dismissAfterDelay: (UIAlertView *) alert
+{
+    [alert dismissWithClickedButtonIndex:0 animated:YES];
+}
+
 - (void)alertView:(UIAlertView *)popupAction clickedButtonAtIndex:(NSInteger)buttonIndex {
     // the user clicked one of the buttons on the game over popup
     if (buttonIndex == 0)
@@ -195,8 +216,8 @@
     {
         //Rest
         [self startGame];
-        _ScoreLabel.text=[NSString stringWithFormat:@"score: %i",playerScore];
-        _RoundLabel.text=[NSString stringWithFormat:@"round: %i",roundIndex];
+        _ScoreLabel.text=[NSString stringWithFormat:@"Score: %i",playerScore];
+        _RoundLabel.text=[NSString stringWithFormat:@"Round: %i",roundIndex];
         [self playRound];
     }
 }
@@ -204,8 +225,11 @@
 - (IBAction)goToMain:(id) sender {
     //return to main menu view
     
+        [myTimer invalidate];
+    myTimer = nil;
     ViewController *main = [[ViewController alloc] initWithNibName: nil bundle:nil];
     [self presentViewController:main animated:YES completion:nil];
+
 }
 
 @end
