@@ -12,7 +12,6 @@
 		313D7BED1652B8310084C9A4 /* ClassicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 313D7BEB1652B8310084C9A4 /* ClassicViewController.xib */; };
 		313D7BF91652B98E0084C9A4 /* Memory.m in Sources */ = {isa = PBXBuildFile; fileRef = 313D7BF81652B98E0084C9A4 /* Memory.m */; };
 		3173DE1716558B730077180B /* SpeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3173DE1516558B730077180B /* SpeedViewController.m */; };
-		3173DE1A16558BB70077180B /* SpeedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3173DE1916558BB70077180B /* SpeedViewController.xib */; };
 		3173DE1E16558D4A0077180B /* SmartsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3173DE1C16558D4A0077180B /* SmartsViewController.m */; };
 		3173DE2116558D770077180B /* SmartsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3173DE2016558D770077180B /* SmartsViewController.xib */; };
 		31D5D6BF164728CE008393C2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31D5D6BE164728CE008393C2 /* UIKit.framework */; };
@@ -25,6 +24,7 @@
 		31D5D6FA16472969008393C2 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 31D5D6ED16472969008393C2 /* Default@2x.png */; };
 		31D5D6FB16472969008393C2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 31D5D6EE16472969008393C2 /* InfoPlist.strings */; };
 		31D5D6FC16472969008393C2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 31D5D6EF16472969008393C2 /* main.m */; };
+		31E717951678EA5900F9065B /* SpeedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31E717941678EA5900F9065B /* SpeedViewController.xib */; };
 		31F72A82164E156000F623DF /* classic.png in Resources */ = {isa = PBXBuildFile; fileRef = 31F72A7C164E156000F623DF /* classic.png */; };
 		31F72A83164E156000F623DF /* classicclick.png in Resources */ = {isa = PBXBuildFile; fileRef = 31F72A7D164E156000F623DF /* classicclick.png */; };
 		31F72A84164E156000F623DF /* smarts.png in Resources */ = {isa = PBXBuildFile; fileRef = 31F72A7E164E156000F623DF /* smarts.png */; };
@@ -55,7 +55,6 @@
 		313D7BF81652B98E0084C9A4 /* Memory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Memory.m; sourceTree = "<group>"; };
 		3173DE1416558B730077180B /* SpeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpeedViewController.h; sourceTree = "<group>"; };
 		3173DE1516558B730077180B /* SpeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpeedViewController.m; sourceTree = "<group>"; };
-		3173DE1916558BB70077180B /* SpeedViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SpeedViewController.xib; path = "/Users/cse483w/Documents/iPhone Projects/TapOut/TapOut/Resources/XIBs/SpeedViewController.xib"; sourceTree = "<absolute>"; };
 		3173DE1B16558D4A0077180B /* SmartsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartsViewController.h; sourceTree = "<group>"; };
 		3173DE1C16558D4A0077180B /* SmartsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmartsViewController.m; sourceTree = "<group>"; };
 		3173DE2016558D770077180B /* SmartsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SmartsViewController.xib; sourceTree = "<group>"; };
@@ -74,6 +73,7 @@
 		31D5D6EF16472969008393C2 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		31D5D6F016472969008393C2 /* TapOut-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "TapOut-Info.plist"; sourceTree = "<group>"; };
 		31D5D6F116472969008393C2 /* TapOut-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TapOut-Prefix.pch"; sourceTree = "<group>"; };
+		31E717941678EA5900F9065B /* SpeedViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpeedViewController.xib; sourceTree = "<group>"; };
 		31F72A7C164E156000F623DF /* classic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = classic.png; sourceTree = "<group>"; };
 		31F72A7D164E156000F623DF /* classicclick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = classicclick.png; sourceTree = "<group>"; };
 		31F72A7E164E156000F623DF /* smarts.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smarts.png; sourceTree = "<group>"; };
@@ -205,7 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				3173DE2016558D770077180B /* SmartsViewController.xib */,
-				3173DE1916558BB70077180B /* SpeedViewController.xib */,
+				31E717941678EA5900F9065B /* SpeedViewController.xib */,
 				3121A45016497CD400F6E512 /* ViewController.xib */,
 				313D7BEB1652B8310084C9A4 /* ClassicViewController.xib */,
 			);
@@ -312,8 +312,8 @@
 				31F72A9E164E2BFD00F623DF /* yellow.png in Resources */,
 				31F72A9F164E2BFD00F623DF /* yellowselect.png in Resources */,
 				313D7BED1652B8310084C9A4 /* ClassicViewController.xib in Resources */,
-				3173DE1A16558BB70077180B /* SpeedViewController.xib in Resources */,
 				3173DE2116558D770077180B /* SmartsViewController.xib in Resources */,
+				31E717951678EA5900F9065B /* SpeedViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
