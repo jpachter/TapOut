@@ -167,6 +167,7 @@
         if(playerIndex == roundIndex-1){
             
             [self roundOver];
+          
             //next round
             playerIndex = 0;
             _RoundLabel.text=[NSString stringWithFormat:@"Round: %i",++roundIndex];
@@ -214,7 +215,7 @@
     }
     else
     {
-        //Rest
+        //Reset
         [self startGame];
         _ScoreLabel.text=[NSString stringWithFormat:@"Score: %i",playerScore];
         _RoundLabel.text=[NSString stringWithFormat:@"Round: %i",roundIndex];
@@ -225,11 +226,10 @@
 - (IBAction)goToMain:(id) sender {
     //return to main menu view
     
-        [myTimer invalidate];
+    [myTimer invalidate];
     myTimer = nil;
     ViewController *main = [[ViewController alloc] initWithNibName: nil bundle:nil];
     [self presentViewController:main animated:YES completion:nil];
-
 }
 
 @end
