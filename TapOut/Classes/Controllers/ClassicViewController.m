@@ -55,7 +55,7 @@
 - (void)playRound {
     
     //disable all colored buttons when illuminate
-    //[self disableButtons];
+    [self disableButtons];
     
     _RoundLabel.text=[NSString stringWithFormat:@"Round: %i",roundIndex];
     
@@ -112,7 +112,7 @@
     if(arrIndex==roundIndex)  //stop the calling of illumination.
     {
         [myTimer invalidate];
-        [self enableButtons];
+        [self performSelector:@selector(enableButtons) withObject:nil afterDelay:1];
     }
 }
 
@@ -170,7 +170,7 @@
           
             //next round
             playerIndex = 0;
-            _RoundLabel.text=[NSString stringWithFormat:@"Round: %i",++roundIndex];
+            roundIndex++;
             [self performSelector:@selector(playRound) withObject:nil afterDelay:1.5];
         }
         else
