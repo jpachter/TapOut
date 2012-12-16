@@ -15,6 +15,7 @@
 @implementation SmartsViewController
 
 @synthesize memStruct;
+@synthesize buttons;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -28,9 +29,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     //Game startup. Initialize and begin.
     memStruct = [[Memory alloc] init];
+    rotated = false;
+    buttons.layer.anchorPoint = CGPointMake(0.5,0.7);
+    [self continueSpinning];
+
     [self startGame];
     [self playRound];
 }
@@ -112,8 +116,46 @@
     if(arrIndex==roundIndex)  //stop the calling of illumination.
     {
         [myTimer invalidate];
+        //CGSize sz = buttons.bounds.size;
+        // Anchorpoint coords are between 0.0 and 1.0
+        //buttons.layer.anchorPoint = CGPointMake(sz.width/2, sz.height/2)
+
+    
         [self enableButtons];
     }
+}
+
+-(void)continueSpinning {
+    [UIView animateWithDuration:20 delay:0.0
+                        options:(UIViewAnimationOptionAllowUserInteraction |
+                                 UIViewAnimationOptionCurveLinear
+                                 |  UIViewAnimationOptionRepeat)
+                     animations:^(void){
+                         if(!rotated){
+                             buttons.transform = CGAffineTransformMakeRotation(M_PI);
+                             rotated = true;
+                         }
+                         else{
+                             buttons.transform = CGAffineTransformMakeRotation(-2*M_PI);
+                             rotated = false;
+                         }
+                     }
+                     completion:nil
+                     
+     ];
+
+    
+    [self performSelector:@selector(continueSpinning) withObject:nil afterDelay:20];
+}
+
+-(void)fixFrame{
+    _BlueButton.frame = [[_BlueButton.layer presentationLayer] frame];
+    
+    _RedButton.frame = [[_RedButton.layer presentationLayer] frame];
+    
+    _YellowButton.frame = [[_YellowButton.layer presentationLayer] frame];
+    
+    _GreenButton.frame = [[_GreenButton.layer presentationLayer] frame];
 }
 
 - (void)buttonFade:(UIButton*) button {
@@ -138,26 +180,55 @@
     button.selected = FALSE;
 }
 
-- (IBAction)gameButtonClicked:(id) sender {
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    UITouch *touch = [touches anyObject];
+    CGPoint touchPoint = [touch locationInView:self.view];
+    NSInteger playerClick;
+
+    CALayer *blue = (CALayer*)[self.BlueButton.layer presentationLayer];
+        CALayer *red = (CALayer*)[self.RedButton.layer presentationLayer];
+        CALayer *green = (CALayer*)[self.GreenButton.layer presentationLayer];
+        CALayer *yellow = (CALayer*)[self.YellowButton.layer presentationLayer];
+    
+    if(CGRectIntersectsRect(red.frame, CGRectMake(touchPoint.x, touchPoint.y, 1, 1))) {
+        // This button was hit whilst moving - do something with it here
+ 
+        playerClick = 1;
+        
+        [self gameButtonClicked:playerClick];
+    }
+    if(CGRectIntersectsRect(blue.frame, CGRectMake(touchPoint.x, touchPoint.y, 1, 1))) {
+        // This button was hit whilst moving - do something with it here
+
+    
+        
+        playerClick = 4;
+        
+                [self gameButtonClicked:playerClick];
+    }
+    if(CGRectIntersectsRect(yellow.frame, CGRectMake(touchPoint.x, touchPoint.y, 1, 1))) {
+    
+        // This button was hit whilst moving - do something with it here
+
+            playerClick = 2;
+        
+                [self gameButtonClicked:playerClick];
+    }
+    if(CGRectIntersectsRect(green.frame, CGRectMake(touchPoint.x, touchPoint.y, 1, 1))) {        // This button was hit whilst moving - do something with it here
+
+            playerClick = 3;
+        
+    
+        [self gameButtonClicked:playerClick];
+        
+    }
+}
+
+- (IBAction)gameButtonClicked:(int) playerClick {
     //after illumination, player repeats sequence
     
     //know which button the users have clicked
-    NSInteger playerClick;
-    switch ( ((UIButton*)sender).tag ){
-            
-        case 1:
-            playerClick = 1;
-            break;
-        case 2:
-            playerClick = 2;
-            break;
-        case 3:
-            playerClick = 3;
-            break;
-        case 4:
-            playerClick = 4;
-            break;
-    }
     
     //if click right, playerScore++, playerIndex++
     if([memStruct getButton:playerIndex] == playerClick){

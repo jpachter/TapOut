@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3121A45116497CD400F6E512 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3121A45016497CD400F6E512 /* ViewController.xib */; };
+		3131280C167D54D800C121BB /* MyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3131280B167D54D800C121BB /* MyButton.m */; };
 		313D7BE81652B81C0084C9A4 /* ClassicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 313D7BE51652B81C0084C9A4 /* ClassicViewController.m */; };
 		313D7BED1652B8310084C9A4 /* ClassicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 313D7BEB1652B8310084C9A4 /* ClassicViewController.xib */; };
 		313D7BF91652B98E0084C9A4 /* Memory.m in Sources */ = {isa = PBXBuildFile; fileRef = 313D7BF81652B98E0084C9A4 /* Memory.m */; };
@@ -48,6 +49,8 @@
 
 /* Begin PBXFileReference section */
 		3121A45016497CD400F6E512 /* ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
+		3131280A167D54D800C121BB /* MyButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyButton.h; sourceTree = "<group>"; };
+		3131280B167D54D800C121BB /* MyButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyButton.m; sourceTree = "<group>"; };
 		313D7BE41652B81C0084C9A4 /* ClassicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassicViewController.h; sourceTree = "<group>"; };
 		313D7BE51652B81C0084C9A4 /* ClassicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassicViewController.m; sourceTree = "<group>"; };
 		313D7BEB1652B8310084C9A4 /* ClassicViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClassicViewController.xib; sourceTree = "<group>"; };
@@ -144,6 +147,8 @@
 			isa = PBXGroup;
 			children = (
 				313D7BF71652B98E0084C9A4 /* Memory.h */,
+				3131280A167D54D800C121BB /* MyButton.h */,
+				3131280B167D54D800C121BB /* MyButton.m */,
 				313D7BF81652B98E0084C9A4 /* Memory.m */,
 				31D5D6E216472969008393C2 /* AppDelegate */,
 				31D5D6E516472969008393C2 /* Controllers */,
@@ -331,6 +336,7 @@
 				313D7BF91652B98E0084C9A4 /* Memory.m in Sources */,
 				3173DE1716558B730077180B /* SpeedViewController.m in Sources */,
 				3173DE1E16558D4A0077180B /* SmartsViewController.m in Sources */,
+				3131280C167D54D800C121BB /* MyButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

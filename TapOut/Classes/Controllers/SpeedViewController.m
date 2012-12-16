@@ -58,96 +58,83 @@
 - (void)playRound {
 
     //disable all colored buttons when illuminate
-    //[self disableButtons];
-        roundIndex++;
-    _RoundLabel.text=[NSString stringWithFormat:@"Round: %i",roundIndex];
-    
-    _ReminingTime.text=[NSString stringWithFormat:@"%.2f",.70*(double)roundIndex];
-    
-        playerIndex=0;
-    //illuminate button --- read value in arr from 0 to round-1
-    arrIndex=0;
-    
-    //control the illumination per round
     [self disableButtons];
-    myTimer=[NSTimer scheduledTimerWithTimeInterval:.7 target:self selector:@selector(illumination:) userInfo:nil repeats:YES];
+    playerIndex=0;         //Player button index
+    arrIndex=0;            //Read value in memStruct at arrIndex
+    roundIndex++;          //Round
+
+    _roundLabel.text=[NSString stringWithFormat:@"Round: %i",roundIndex];
+    _scoreLabel.text=[NSString stringWithFormat:@"Score: %i",playerScore];
+    _countdownLabel.text=[NSString stringWithFormat:@"%.2f",.70*(double)roundIndex];
+
+    //control the illumination per round
+    illuminationTimer=[NSTimer scheduledTimerWithTimeInterval:.7 target:self selector:@selector(illumination) userInfo:nil repeats:YES];
 
 }
 
 - (void)disableButtons {
-    //disable all buttons when illuminate
-    
-    _RedButton.enabled=NO;
-    _YellowButton.enabled=NO;
-    _GreenButton.enabled=NO;
-    _BlueButton.enabled=NO;
+    //disable all buttons before illuminate
+    _redButton.enabled=NO;
+    _yellowButton.enabled=NO;
+    _greenButton.enabled=NO;
+    _blueButton.enabled=NO;
 }
 
 - (void)enableButtons {
     //enable buttons after illuminate
-    
-    _RedButton.enabled=YES;
-    _YellowButton.enabled=YES;
-    _GreenButton.enabled=YES;
-    _BlueButton.enabled=YES;
+    _redButton.enabled=YES;
+    _yellowButton.enabled=YES;
+    _greenButton.enabled=YES;
+    _blueButton.enabled=YES;
 }
 
-- (void)illumination:(NSTimer *) timer {
+- (void)illumination{
     //illuminate buttons whose values are read from memStruct
     
     UIButton *button;
-    int index=[memStruct getButton:arrIndex];
+    int index=[memStruct getButton:arrIndex++];
     
     switch((NSInteger)index){
         case 1:
-            button = _RedButton;
+            button = _redButton;
             break;
         case 2:
-            button = _YellowButton;
+            button = _yellowButton;
             break;
         case 3:
-            button = _GreenButton;
+            button = _greenButton;
             break;
         case 4:
-            button = _BlueButton;
+            button = _blueButton;
             break;
     }
     
     [self buttonFade: button];
     [self performSelector:@selector(buttonReturn:) withObject:button afterDelay:.35];
     
-    arrIndex+=1;
+
     if(arrIndex==roundIndex)  //stop the calling of illumination.
     {
-        [myTimer invalidate];
+        [illuminationTimer invalidate];
         [self performSelector:@selector(enableButtons) withObject:nil afterDelay:.7];
-        timercount=.7*roundIndex;
+        countDown=.7*roundIndex;
         [self performSelector:@selector(startTimer) withObject:nil afterDelay:.7];
     }
 }
 
 - (void)startTimer {
-        Timer2=[NSTimer scheduledTimerWithTimeInterval:.01 target:self selector:@selector(TimerCount:) userInfo:nil repeats:YES];
+        countdownTimer=[NSTimer scheduledTimerWithTimeInterval:.01 target:self selector:@selector(doCountdown) userInfo:nil repeats:YES];
 }
 
 
--(void) TimerCount:(NSTimer *) timer{
-    _ReminingTime.text=[NSString stringWithFormat:@"%.2f",timercount];
-    _PlayerLabel.text=[NSString stringWithFormat:@"Player: %i",playerIndex];
-    timercount-=.01;
-    if(timercount<0){
-        
-        [Timer2 invalidate];
-        if(playerIndex==roundIndex){
-            [self roundOver];
-            [self performSelector:@selector(playRound) withObject:nil afterDelay:1.5];
-        }
-        else{
-            [self popupGameOver];
-        }
-      // else{
-     //       [self popupGameOver];
-       // }
+- (void) doCountdown{
+    countDown-=.01;
+    _countdownLabel.text=[NSString stringWithFormat:@"%.2f",countDown];
+    
+    if(countDown<0){
+        _countdownLabel.text=[NSString stringWithFormat:@"0.00"];
+        [countdownTimer invalidate];
+        [self popupGameOver];
     }
     
 }
@@ -176,8 +163,6 @@
 
 - (IBAction)gameButtonClicked:(id) sender {
     //after illumination, player repeats sequence
-    
-    //know which button the users have clicked
     NSInteger playerClick;
     switch ( ((UIButton*)sender).tag ){
             
@@ -195,33 +180,28 @@
             break;
     }
     
-    //if click right, playerScore++, playerIndex++
-    
     if([memStruct getButton:playerIndex] == playerClick){
         playerIndex++;
-        if(playerIndex<roundIndex){
-            _ScoreLabel.text=[NSString stringWithFormat:@"Score: %i",++playerScore];
+        playerScore+=2;
+        _scoreLabel.text=[NSString stringWithFormat:@"Score: %i",playerScore];
 
-        }
-        else{
-            [Timer2 invalidate];
+        if(playerIndex == roundIndex){
+            [countdownTimer invalidate];
             [self roundOver];
             [self performSelector:@selector(playRound) withObject:nil afterDelay:1.5];
         }
     }
     else{
-        [Timer2 invalidate];
+        [countdownTimer invalidate];
         [self popupGameOver];
     }
 }
 
 - (void)popupGameOver {
     // open a popup with return and retry buttons
-    if(myTimer){
-        
-    
-    UIAlertView *popup = [[UIAlertView alloc] initWithTitle:@"Game Over" message:@"Play again?" delegate:self cancelButtonTitle:@"Main Menu" otherButtonTitles:@"Retry", nil];
-    [popup show];
+    if(illuminationTimer){
+        UIAlertView *popup = [[UIAlertView alloc] initWithTitle:@"Game Over" message:@"Play again?" delegate:self cancelButtonTitle:@"Main Menu" otherButtonTitles:@"Retry", nil];
+        [popup show];
     }
 }
 
@@ -254,10 +234,8 @@
     }
     else
     {
-        //Rest
+        //Retry
         [self startGame];
-        _ScoreLabel.text=[NSString stringWithFormat:@"Score: %i",playerScore];
-        _RoundLabel.text=[NSString stringWithFormat:@"Round: %i",roundIndex];
         [self playRound];
     }
 }
@@ -265,13 +243,12 @@
 - (IBAction)goToMain:(id) sender {
     //return to main menu view
     
-    [Timer2 invalidate];
-    Timer2 = nil;
-    [myTimer invalidate];
-    myTimer = nil;
+    [countdownTimer invalidate];
+    countdownTimer = nil;
+    [illuminationTimer invalidate];
+    illuminationTimer = nil;
     ViewController *main = [[ViewController alloc] initWithNibName: nil bundle:nil];
     [self presentViewController:main animated:YES completion:nil];
-
 }
 
 @end
